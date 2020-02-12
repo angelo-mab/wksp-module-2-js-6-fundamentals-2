@@ -24,6 +24,9 @@ var greeting = 'Hello';
 // a. 'Hello'
 // b. undefined
 // c. Uncaught ReferenceError: greeting is not defined
+
+//b. undefined
+//the declaration is hoisted to the top but not the value inside
 ```
 
 ---
@@ -39,7 +42,7 @@ const anotherGreeting = 'Good evening';
 
 // a. 'Good evening'
 // b. undefined
-// c. ReferenceError: can't access lexical declaration `anotherGreeting' before initialization
+// c. ReferenceError: can't access lexical declaration `anotherGreeting' before initialization***
 ```
 
 ---
@@ -51,7 +54,7 @@ let yetAnotherGreeting = 'Goodnight';
 
 // a. 'Good evening'
 // b. undefined
-// c. ReferenceError: can't access lexical declaration `anotherGreeting' before initialization
+// c. ReferenceError: can't access lexical declaration `anotherGreeting' before initialization***
 ```
 
 ---
@@ -75,3 +78,23 @@ var yourName = 'Fred';
 Of note, it is not the declarations themselves that are moved to the top, just the JS compiler that reading them first and alloting them memory space.
 
 ---
+## A parameter
+is a variable in function, or method, definition.
+
+```js
+function greeting(name){
+    return `${name}! What some bacon?`;
+
+}
+
+greeting('Angelo');
+```
+
+```js
+function greeting(names){
+    names.forEach(funtoin(name){
+        return `${name}! What some bacon?`;
+    }
+}
+greeting(['daniel', 'bob', 'clara']);
+```

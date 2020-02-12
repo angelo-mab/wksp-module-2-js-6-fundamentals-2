@@ -1,4 +1,4 @@
-let verifyEquals = require('../../assets/verify-equals');
+let verifyEquals = require("../../assets/verify-equals");
 
 // Problem 6
 // ---------
@@ -7,11 +7,11 @@ let verifyEquals = require('../../assets/verify-equals');
 // - accepts an array.
 // - The array has 3 elements.
 // - The first element of the array is a string that represents an operation.
-// - If the operation is 
-//      - "add", return the sum of the two other elements of the array. 
-//      - "sub" return their difference. 
-//      - "mult" return their product.  
-//  - Anything else return undefined. 
+// - If the operation is
+//      - "add", return the sum of the two other elements of the array.
+//      - "sub" return their difference.
+//      - "mult" return their product.
+//  - Anything else return undefined.
 
 // For example:
 // f(["add", 10, 20]); // 30
@@ -19,15 +19,48 @@ let verifyEquals = require('../../assets/verify-equals');
 // f(["spoof", 10, 10]); // undefined
 
 function f(arr) {
-
+  if (
+    typeof arr[0] !== "string" ||
+    typeof arr[1] !== "number" ||
+    typeof arr[2] !== "number"
+  )
+    return undefined;
+  switch (arr[0]) {
+    case "add":
+      return arr[1] + arr[2];
+    case "sub":
+      return arr[1] - arr[2];
+    case "mult":
+      return arr[1] * arr[2];
+    default:
+      return undefined;
+  }
 }
 
 // Step 2
 // We need 8 test cases. The first input is provided.
 // Don't forget to test all of the question parameters
 
-let inputs = [['add', 10, 20], ['chair', 20, 10]];
-let outputs = [30, undefined];
+let inputs = [
+  ["add", 10, 20],
+  ["chair", 20, 10],
+  ["sub", 20, 30],
+  ["mult", 4, 20],
+  ["add", "hello", 0],
+  ["sub", 1, "hello"],
+  [0, "multi", 0],
+  [19, "add", 12]
+];
+let outputs = [
+  30,
+  undefined,
+  -10,
+  80,
+  undefined,
+  undefined,
+  undefined,
+  undefined
+];
 
 // Step 3
 // Run this file in the debugger.
@@ -36,7 +69,7 @@ let outputs = [30, undefined];
 // STOP -----------------------------------------------------------------
 // No code changes below. This is the actual test that will run your test cases and validate your function.
 function runTest(i) {
-  if (i >= inputs.length) throw new Error('You do not have enough test cases');
+  if (i >= inputs.length) throw new Error("You do not have enough test cases");
   let expected = outputs[i];
   let actual = f(inputs[i]);
   verifyEquals(expected, actual);
@@ -48,4 +81,4 @@ runTest(2);
 runTest(3);
 runTest(4);
 runTest(5);
-console.log('All tests passed for ' + __filename);
+console.log("All tests passed for " + __filename);

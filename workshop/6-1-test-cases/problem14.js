@@ -21,8 +21,19 @@ let verifyEquals = require('../../assets/verify-equals');
 // even though there is a space before the a in adipisicing
 
 function f(str) {
+  let string = str.split('');
+  let newStr = '';
 
+  for(let i = 0; i < string.length; i++){
+    if(i % 40 === 0){
+      res += '\n';
+      if(string[i] === ' ')
+      res += string[i];
+    }
+    else res += string[i]
+  }
 }
+/* I'm not gonna lie, I couldn't wrap my head around this problem for a long time. I had to take a look into the solution for this one*/
 
 // Test cases
 let inputs = [];

@@ -1,4 +1,4 @@
-let verifyEquals = require('../../assets/verify-equals');
+let verifyEquals = require("../../assets/verify-equals");
 
 // Problem 3
 // ---------
@@ -9,15 +9,29 @@ let verifyEquals = require('../../assets/verify-equals');
 // You can use the typeof function to check the type of each element (e.g. typeof 3 returns 'number')
 
 function f(input) {
-
+  if (
+    input.length === 2 &&
+    typeof input[0] === "number" &&
+    typeof input[1] === "number"
+  )
+    return input[0] + input[1];
+  else return undefined;
 }
 
 // Step 2
 // We need 7 test cases. The first input is provided.
 // Don't forget to test all of the question parameters
 
-let inputs = [[2, 4], [-3, 3]];
-let outputs = [6, 0];
+let inputs = [
+  [2, 4],
+  [-3, 3],
+  ["hello", "yoyoyo"],
+  [,],
+  [" ", " "],
+  [3, 4],
+  [4, "hello"]
+];
+let outputs = [6, 0, undefined, undefined, undefined, 7, undefined];
 
 // Step 3
 // Run this file in the debugger.
@@ -26,10 +40,10 @@ let outputs = [6, 0];
 // STOP -----------------------------------------------------------------
 // No code changes below. This is the actual test that will run your test cases and validate your function.
 function runTest(i) {
-    if (i >= inputs.length) throw new Error('You do not have enough test cases');
-    let expected = outputs[i];
-    let actual = f(inputs[i]);
-    verifyEquals(expected, actual);
+  if (i >= inputs.length) throw new Error("You do not have enough test cases");
+  let expected = outputs[i];
+  let actual = f(inputs[i]);
+  verifyEquals(expected, actual);
 }
 
 runTest(0);
@@ -40,4 +54,4 @@ runTest(4);
 runTest(5);
 runTest(6);
 
-console.log('All tests passed for ' + __filename);
+console.log("All tests passed for " + __filename);

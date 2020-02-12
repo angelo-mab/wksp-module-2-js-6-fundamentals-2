@@ -21,24 +21,24 @@ function reverseString(str) {
 // Expand each of the following and get the result of the expression
 // Q1
 square(decrement(square(decrement(3))));
-
+9
 
 
 
 // Q2
 decrement(decrement(square(square(3))));
 
-
+79
 
 
 // Q3
 duplicateString(reverseString("hello"));
-
+olleholleh
 
 
 
 // Q4
 reverseString(duplicateString(duplicateString("foo")));
-
+oofoofoofoof
 
 

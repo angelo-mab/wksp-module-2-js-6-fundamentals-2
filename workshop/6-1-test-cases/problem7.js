@@ -1,11 +1,11 @@
-let verifyEquals = require('../../assets/verify-equals');
+let verifyEquals = require("../../assets/verify-equals");
 
 // Problem 7
 // ---------
 // Step 1
-// - The function input is an array. 
+// - The function input is an array.
 // - The first element of the array is a string. The second is a number.
-// - Make this function return the string repeated as many times as specified by the second element of the array. 
+// - Make this function return the string repeated as many times as specified by the second element of the array.
 // - If a negative number or zero is specified, return an empty string. If any invalid parameters are supplied return undefined.
 
 // f(["foo", 3]) // "foofoofoo"
@@ -13,15 +13,43 @@ let verifyEquals = require('../../assets/verify-equals');
 // f(["foo", -1]) // ""
 
 function f(arr) {
-    
+  let str = "";
+  if (
+    typeof arr[0] !== "string" ||
+    typeof arr[1] !== "number" ||
+    arr.length !== 2
+  )
+    return undefined;
+  if (arr[1] > 0) {
+    for (let i = 0; i < arr[1]; i++) {
+      str += arr[0];
+    }
+    return str;
+  } else return undefined;
 }
 
 // Step 2
 // We need 7 test cases.
 // Don't forget to test all of the question parameters
 
-let inputs = [];
-let outputs = [];
+let inputs = [
+  ["hello", 3],
+  ["make", 2],
+  [23, "sds"],
+  [undefined, NaN],
+  [[], 2],
+  ["you", 2],
+  ["boobs", 2]
+];
+let outputs = [
+  "hellohellohello",
+  "makemake",
+  undefined,
+  undefined,
+  undefined,
+  "youyou",
+  "boobsboobs"
+];
 
 // Step 3
 // Run this file in the debugger.
@@ -30,10 +58,10 @@ let outputs = [];
 // STOP -----------------------------------------------------------------
 // No code changes below. This is the actual test that will run your test cases and validate your function.
 function runTest(i) {
-    if (i >= inputs.length) throw new Error('You do not have enough test cases');
-    let expected = outputs[i];
-    let actual = f(inputs[i]);
-    verifyEquals(expected, actual);
+  if (i >= inputs.length) throw new Error("You do not have enough test cases");
+  let expected = outputs[i];
+  let actual = f(inputs[i]);
+  verifyEquals(expected, actual);
 }
 
 runTest(0);
@@ -43,4 +71,4 @@ runTest(3);
 runTest(4);
 runTest(5);
 runTest(6);
-console.log('All tests passed for ' + __filename);
+console.log("All tests passed for " + __filename);
